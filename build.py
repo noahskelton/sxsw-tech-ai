@@ -298,50 +298,55 @@ html = f'''<!DOCTYPE html>
 *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
 body {{
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: #fafafa; color: #1a1a1a; line-height: 1.55;
+  background: #fff; color: #111; line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }}
-.wrap {{ max-width: 720px; margin: 0 auto; padding: 0 16px 80px; }}
-header {{ padding: 28px 0 12px; }}
-header h1 {{ font-size: 18px; font-weight: 600; letter-spacing: -0.02em; }}
-header p {{ color: #888; font-size: 13px; margin-top: 2px; }}
+.wrap {{ max-width: 680px; margin: 0 auto; padding: 0 20px 80px; }}
+
+/* Header */
+header {{ padding: 32px 0 16px; }}
+header h1 {{ font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: #000; }}
+header p {{ color: #666; font-size: 13px; margin-top: 4px; }}
 .search {{
-  padding: 8px 12px; width: 100%; border: 1px solid #e5e5e5;
-  border-radius: 8px; font-size: 14px; outline: none; background: #fff;
-  margin: 8px 0 4px;
+  padding: 10px 14px; width: 100%; border: 1.5px solid #ddd;
+  border-radius: 10px; font-size: 14px; outline: none; background: #f8f8f8;
+  margin: 10px 0 4px; transition: border-color 0.15s, background 0.15s;
 }}
-.search:focus {{ border-color: #999; }}
-.search::placeholder {{ color: #bbb; }}
+.search:focus {{ border-color: #888; background: #fff; }}
+.search::placeholder {{ color: #aaa; }}
 
 /* Top-level track tabs */
 .track-tabs {{
-  display: flex; gap: 0; border-bottom: 2px solid #e5e5e5; margin-bottom: 0;
+  display: flex; gap: 0; border-bottom: 2px solid #eee;
 }}
 .track-tab {{
-  padding: 10px 20px; font-size: 14px; font-weight: 600;
-  color: #999; cursor: pointer; border: none; background: none;
-  border-bottom: 2px solid transparent; margin-bottom: -2px;
+  padding: 12px 20px; font-size: 14px; font-weight: 600;
+  color: #aaa; cursor: pointer; border: none; background: none;
+  border-bottom: 2.5px solid transparent; margin-bottom: -2px;
+  transition: color 0.15s;
 }}
-.track-tab:hover {{ color: #333; }}
-.track-tab.active {{ color: #111; border-bottom-color: #111; }}
+.track-tab:hover {{ color: #555; }}
+.track-tab.active {{ color: #000; border-bottom-color: #000; }}
+.track-tab small {{ font-weight: 400; color: inherit; opacity: 0.6; }}
 .track-section {{ display: none; }}
 .track-section.active {{ display: block; }}
 
-/* Sub tabs (events/favs/speakers) */
+/* Sub tabs */
 .tabs {{
-  display: flex; gap: 0; border-bottom: 1px solid #e5e5e5;
+  display: flex; gap: 0; border-bottom: 1px solid #eee;
 }}
 .tab {{
-  padding: 10px 16px; font-size: 13px; font-weight: 500;
-  color: #999; cursor: pointer; border: none; background: none;
+  padding: 11px 18px; font-size: 13px; font-weight: 600;
+  color: #aaa; cursor: pointer; border: none; background: none;
   border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: color 0.15s;
 }}
-.tab:hover {{ color: #333; }}
-.tab.active {{ color: #111; border-bottom-color: #111; }}
+.tab:hover {{ color: #555; }}
+.tab.active {{ color: #000; border-bottom-color: #000; }}
 .fav-count {{
   font-size: 10px; background: #ef4444; color: #fff; border-radius: 8px;
-  padding: 0 5px; margin-left: 4px; font-weight: 600;
-  display: none;
+  padding: 1px 6px; margin-left: 4px; font-weight: 700;
+  display: none; vertical-align: 1px;
 }}
 .fav-count.show {{ display: inline; }}
 .view {{ display: none; }}
@@ -349,34 +354,35 @@ header p {{ color: #888; font-size: 13px; margin-top: 2px; }}
 
 /* Sticky controls */
 .controls {{
-  position: sticky; top: 0; background: #fafafa; z-index: 10;
-  padding: 8px 0 0; border-bottom: 1px solid #e5e5e5;
+  position: sticky; top: 0; background: #fff; z-index: 10;
+  padding: 10px 0 0; border-bottom: 1px solid #eee;
 }}
 .day-nav {{
-  display: flex; gap: 4px; padding: 4px 0;
+  display: flex; gap: 5px; padding: 4px 0 8px;
   overflow-x: auto; scrollbar-width: none;
 }}
 .day-nav::-webkit-scrollbar {{ display: none; }}
 .nav-day {{
-  flex-shrink: 0; padding: 5px 12px; border-radius: 16px;
-  font-size: 12px; font-weight: 500; background: #eee; color: #333;
-  text-decoration: none; white-space: nowrap;
+  flex-shrink: 0; padding: 6px 14px; border-radius: 18px;
+  font-size: 12px; font-weight: 600; background: #f3f3f3; color: #555;
+  text-decoration: none; white-space: nowrap; transition: background 0.15s;
 }}
-.nav-day:hover {{ background: #ddd; }}
+.nav-day:hover {{ background: #e5e5e5; }}
 
 /* Format filters */
 .fmt-filters {{
-  display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 0;
+  display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 0 10px;
   align-items: center;
 }}
 .fmt-toggle {{
-  font-size: 11px; font-weight: 500; border: none; cursor: pointer;
-  background: none; color: #999; padding: 0; margin-right: 4px;
+  font-size: 11px; font-weight: 600; border: none; cursor: pointer;
+  background: none; color: #888; padding: 0; margin-right: 2px;
   white-space: nowrap; text-decoration: underline;
+  text-underline-offset: 2px;
 }}
 .fmt-toggle:hover {{ color: #333; }}
 .fmt-check {{
-  display: flex; align-items: center; gap: 4px; cursor: pointer;
+  display: flex; align-items: center; gap: 5px; cursor: pointer;
   font-size: 11px; font-weight: 600; color: var(--fg);
   -webkit-user-select: none; user-select: none; white-space: nowrap;
 }}
@@ -387,72 +393,97 @@ header p {{ color: #888; font-size: 13px; margin-top: 2px; }}
   display: flex; align-items: center; justify-content: center;
   transition: background 0.1s;
 }}
-.fmt-check input:checked ~ .fmt-dot {{
-  background: var(--fg);
-}}
+.fmt-check input:checked ~ .fmt-dot {{ background: var(--fg); }}
 .fmt-check input:checked ~ .fmt-dot::after {{
   content: ''; display: block; width: 4px; height: 7px;
   border: solid #fff; border-width: 0 1.5px 1.5px 0;
   transform: rotate(45deg); margin-top: -1px;
 }}
-.fmt-check:not(:has(input:checked)) {{
-  opacity: 0.35;
-}}
+.fmt-check:not(:has(input:checked)) {{ opacity: 0.3; }}
 
-/* Events */
+/* ── Events ── */
 .day-heading {{
-  font-size: 12px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.06em; color: #999; padding: 24px 0 10px;
+  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; color: #000; padding: 28px 0 12px;
+  border-bottom: 2px solid #111;
 }}
-.ev {{ border-bottom: 1px solid #eee; padding: 14px 0; }}
+.ev {{
+  padding: 16px 0; border-bottom: 1px solid #f0f0f0;
+}}
 .ev.hidden {{ display: none; }}
-.ev-top {{ display: flex; align-items: flex-start; gap: 8px; }}
+.ev-top {{ display: flex; align-items: flex-start; gap: 10px; }}
 .ev-main {{ flex: 1; min-width: 0; }}
-.meta {{ display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; }}
-.time {{ font-size: 12px; font-weight: 600; color: #444; }}
+
+/* Time + format row */
+.meta {{
+  display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;
+}}
+.time {{
+  font-size: 13px; font-weight: 700; color: #000;
+  font-variant-numeric: tabular-nums;
+}}
 .fmt {{
-  font-size: 10px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.04em; padding: 2px 7px; border-radius: 4px;
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; padding: 3px 8px; border-radius: 4px;
 }}
 .track-tag {{
-  font-size: 10px; font-weight: 500; color: #999;
-  padding: 2px 7px; border-radius: 4px; background: #f5f5f5;
+  font-size: 10px; font-weight: 600; color: #888;
+  padding: 3px 8px; border-radius: 4px; background: #f3f3f3;
 }}
+
+/* Title */
 .title {{
-  font-size: 15px; font-weight: 600; color: #111;
-  text-decoration: none; letter-spacing: -0.01em;
+  font-size: 16px; font-weight: 700; color: #000;
+  text-decoration: none; letter-spacing: -0.02em;
+  line-height: 1.35;
 }}
-.title:hover {{ text-decoration: underline; }}
-.venue {{ font-size: 12px; color: #999; margin-top: 2px; }}
-details {{ margin: 6px 0 0; }}
+.title:hover {{ text-decoration: underline; text-underline-offset: 2px; }}
+
+/* Venue */
+.venue {{ font-size: 12px; color: #888; margin-top: 3px; }}
+
+/* Description toggle */
+details {{ margin: 8px 0 0; }}
 .more {{
-  font-size: 12px; color: #aaa; cursor: pointer; list-style: none;
+  font-size: 12px; color: #999; cursor: pointer; list-style: none;
+  font-weight: 500;
 }}
 .more::-webkit-details-marker {{ display: none; }}
-.more::before {{ content: '+ '; }}
+.more::before {{ content: '+ '; font-weight: 700; }}
 details[open] .more::before {{ content: '− '; }}
-.more:hover {{ color: #666; }}
-.desc {{ font-size: 13px; color: #666; margin: 6px 0 0; line-height: 1.6; }}
-.speakers {{ margin-top: 6px; font-size: 13px; line-height: 1.7; color: #666; }}
-.speaker {{ color: #111; text-decoration: none; font-weight: 500; }}
-.speaker:hover {{ text-decoration: underline; }}
+.more:hover {{ color: #444; }}
+.desc {{
+  font-size: 13px; color: #555; margin: 8px 0 0; line-height: 1.65;
+}}
+
+/* Speakers */
+.speakers {{
+  margin-top: 8px; font-size: 13px; line-height: 1.8; color: #777;
+}}
+.speaker {{
+  color: #333; text-decoration: none; font-weight: 600;
+}}
+.speaker:hover {{ text-decoration: underline; text-underline-offset: 2px; }}
 
 /* Calendar links */
-.cal-links {{ display: flex; gap: 10px; margin-top: 6px; }}
-.cal-link {{ font-size: 11px; font-weight: 500; color: #999; text-decoration: none; cursor: pointer; }}
-.cal-link:hover {{ color: #111; }}
+.cal-links {{ display: flex; gap: 12px; margin-top: 8px; }}
+.cal-link {{
+  font-size: 11px; font-weight: 600; color: #aaa;
+  text-decoration: none; cursor: pointer; transition: color 0.15s;
+}}
+.cal-link:hover {{ color: #333; }}
 
 /* Recommendations */
 .rec {{
-  display: flex; align-items: flex-start; gap: 6px;
-  margin: 6px 0 2px; padding: 6px 10px;
-  background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px;
+  display: flex; align-items: flex-start; gap: 8px;
+  margin: 8px 0 2px; padding: 8px 12px;
+  background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px;
 }}
-.rec-icon {{ font-size: 14px; flex-shrink: 0; line-height: 1.4; }}
-.rec-text {{ font-size: 12px; color: #92400e; line-height: 1.5; }}
+.rec-icon {{ font-size: 14px; flex-shrink: 0; line-height: 1.5; }}
+.rec-text {{ font-size: 12px; color: #78350f; line-height: 1.55; font-weight: 500; }}
 .rec-filter {{
   display: flex; align-items: center; gap: 5px; cursor: pointer;
-  font-size: 12px; font-weight: 600; color: #92400e;
+  font-size: 11px; font-weight: 700; color: #92400e;
   -webkit-user-select: none; user-select: none; white-space: nowrap;
   padding: 4px 10px; border-radius: 14px; background: #fffbeb;
   border: 1px solid #fde68a;
@@ -464,9 +495,7 @@ details[open] .more::before {{ content: '− '; }}
   display: flex; align-items: center; justify-content: center;
   transition: background 0.1s;
 }}
-.rec-filter input:checked ~ .rec-dot {{
-  background: #92400e;
-}}
+.rec-filter input:checked ~ .rec-dot {{ background: #92400e; }}
 .rec-filter input:checked ~ .rec-dot::after {{
   content: ''; display: block; width: 4px; height: 7px;
   border: solid #fff; border-width: 0 1.5px 1.5px 0;
@@ -476,37 +505,41 @@ details[open] .more::before {{ content: '− '; }}
 /* Favourite button */
 .fav-btn {{
   flex-shrink: 0; background: none; border: none; cursor: pointer;
-  color: #ccc; padding: 4px; margin-top: 2px; transition: color 0.15s;
+  color: #ddd; padding: 4px; margin-top: 4px; transition: color 0.15s;
 }}
 .fav-btn:hover {{ color: #f87171; }}
 .fav-btn.active {{ color: #ef4444; }}
 .fav-btn.active svg {{ fill: #ef4444; }}
 
 .favs-empty {{
-  text-align: center; padding: 60px 20px; color: #aaa; font-size: 14px;
+  text-align: center; padding: 60px 20px; color: #999; font-size: 14px;
 }}
 
 /* Speakers grid */
 .speaker-grid {{
   display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1px; background: #eee; border: 1px solid #eee; border-radius: 8px;
-  overflow: hidden; margin-top: 16px;
+  gap: 1px; background: #e8e8e8; border: 1px solid #e8e8e8; border-radius: 10px;
+  overflow: hidden; margin-top: 20px;
 }}
 .sp {{
-  display: flex; flex-direction: column; padding: 10px 14px;
+  display: flex; flex-direction: column; padding: 12px 16px;
   background: #fff; text-decoration: none; transition: background 0.1s;
 }}
-.sp:hover {{ background: #f7f7f7; }}
-.sp-name {{ font-size: 14px; font-weight: 500; color: #111; }}
-.sp-role {{ font-size: 12px; color: #999; margin-top: 1px; }}
+.sp:hover {{ background: #f9f9f9; }}
+.sp-name {{ font-size: 14px; font-weight: 600; color: #000; }}
+.sp-role {{ font-size: 12px; color: #888; margin-top: 2px; }}
 
 .day-heading.hidden {{ display: none; }}
 
 @media (max-width: 500px) {{
-  .title {{ font-size: 14px; }}
+  .wrap {{ padding: 0 16px 80px; }}
+  header h1 {{ font-size: 20px; }}
+  .title {{ font-size: 15px; }}
   .speaker-grid {{ grid-template-columns: 1fr; }}
   .tab {{ padding: 10px 12px; font-size: 12px; }}
   .track-tab {{ padding: 10px 14px; font-size: 13px; }}
+  .ev {{ padding: 14px 0; }}
+  .day-heading {{ padding: 24px 0 10px; }}
 }}
 </style>
 </head>
