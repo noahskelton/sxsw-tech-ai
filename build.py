@@ -765,8 +765,15 @@ function renderFavs(section) {{
     return;
   }}
   let html = '';
-  document.querySelector(`.events-list[data-section="${{section}}"]`).querySelectorAll('.ev').forEach(ev => {{
-    if (favs.has(ev.dataset.eid)) html += ev.outerHTML;
+  let currentDay = '';
+  const evList = document.querySelector(`.events-list[data-section="${{section}}"]`);
+  evList.querySelectorAll('.day-heading, .ev').forEach(el => {{
+    if (el.classList.contains('day-heading')) {{
+      currentDay = el.outerHTML;
+    }} else if (favs.has(el.dataset.eid)) {{
+      if (currentDay) {{ html += currentDay; currentDay = ''; }}
+      html += el.outerHTML;
+    }}
   }});
   container.innerHTML = html || '<div class="favs-empty">No favourites in this track.</div>';
 }}
